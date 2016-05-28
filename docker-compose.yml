@@ -1,0 +1,28 @@
+version: '2'
+services:
+  app:
+    build: .
+    command:
+        [ "bash", "-c", "rm -f tmp/pids/server.pid; ./bin/rails server -b 0.0.0.0" ]
+    volumes:
+      - .:/app
+    volumes_from:
+      - bundle
+    ports:
+      - "3000:3000"
+    links:
+      - db
+  bundle:
+    image: busybox
+    volumes:
+      - /bundle
+  db:
+    image: mysql:5.6
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD="true"
+    volumes_from:
+      - db_storage
+  db_storage:
+    image: busybox
+    volumes:
+      - /var/lib/mysql
