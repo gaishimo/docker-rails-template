@@ -1,0 +1,21 @@
+default: &default
+  adapter: aws_sdk_v2
+  warn_on_scan: true
+  read_capacity: 1
+  write_capacity: 1
+
+development:
+  <<: *default
+  endpoint: http://db:8000
+  namespace: dev
+
+test:
+  <<: *default
+  endpoint: http://db:8000
+  namespace: test
+
+staging:
+  <<: *default
+
+production:
+  <<: *default

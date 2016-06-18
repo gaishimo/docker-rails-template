@@ -1,0 +1,8 @@
+
+dc run --rm aws aws dynamodb list-tables --endpoint-url http://db:8000
+
+
+dc run --rm aws aws dynamodb describe-table --table-name dev_books --endpoint-url http://db:8000
+
+
+dc run --rm aws aws dynamodb scan --table-name dev_books --endpoint-url http://db:8000
