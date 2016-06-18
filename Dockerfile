@@ -1,5 +1,5 @@
 # For development
-FROM ruby:2.3.1
+FROM ruby:2.3.1-slim
 
 ENV LANG=C.UTF-8 \
     APP_HOME=/app
